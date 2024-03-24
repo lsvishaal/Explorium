@@ -61,8 +61,6 @@ Explorium provides users with activity suggestions to combat boredom. Upon visit
 
 
 ## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+()
 ```
 
-Feel free to customize this template according to your project's specific details and requirements.
