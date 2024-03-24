@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bored API Suggestion</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@1.19.0/dist/full.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/alpinejs@2.8.2/dist/alpine.js" defer></script>
+
+    <style>
+        /* Custom CSS for the background */
+        body {
+            background: #FFFF1A; /* Change the background color here */
+        }
+        /* Apply shadow to the box */
+        .rounded-lg {
+            box-shadow: 0px 30px 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px; /* Rounded borders */
+        }
+        /* Modify the select background color */
+        select#activity_type, select#participants {
+            background-color: white;
+            padding: 10px; /* Add padding to input boxes */
+            border-radius: 20px; /* Rounded borders for input boxes */
+        }
+        /* Update button and box theme */
+        .btn-primary {
+            background-color: #FFFF1A; /* Matches the background color */
+            color: #000; /* Text color */
+            border-radius: 20px; /* Rounded borders for the button */
+            padding: 10px 20px; /* Add padding to the button */
+        }
+        .btn-primary:hover {
+            background-color: #FFD700; /* Darker yellow for hover */
+        }
+        .suggested-activity {
+            background-color: #FFFF1A; /* Yellow background for consistency */
+            color: #000; /* Black text color */
+            padding: 20px; /* Add more padding to the suggested activity box */
+            border-radius: 20px; /* Rounded borders for the box */
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center">
+    <div class="p-8 space-y-4 bg-white rounded-lg shadow-lg text-gray-900 text-center drop-shadow-2xl outline rounded-lg">
+        <h1 class="text-3xl font-semibold text-cyan-400">
+            Let's find something for you to do ✌️
+        </h1>
+        <form method="post" action="{% url 'suggest_activity' %}" class="flex flex-col space-y-4 drop-shadow-xl">
+            {% csrf_token %}
+            <label for="activity_type" class="text-cyan-400 text-shadow font-semibold">Select Activity Type:</label>
+            <select name="activity_type" id="activity_type" class="select select-bordered font-semibold bg-white text-cyan-400 shadow-md">
+                <option value="recreational" {% if activity_type == "recreational" %}selected{% endif %}>Recreational</option>
+                <option value="education" {% if activity_type == "education" %}selected{% endif %}>Education</option>
+                <!-- Add more options as needed -->
+            </select>
+            <label for="participants" class="text-cyan-400">Select Number of Participants:</label>
+            <select name="participants" id="participants" class="select select-bordered font-semibold bg-white text-cyan-400 shadow-md text-sm"> <!-- Smaller font -->
+                <option value="1">1</option>
+                <option value="2" disabled>2</option> <!-- Disabled option -->
+                <option value="3" disabled>3</option> <!-- Disabled option -->
+            </select>
+            <button type="submit" class="btn btn-primary hover:bg-yellow-500 text-white">
+                Go
+            </button>
+        </form>
+
+        {% if activity %}
+        <div class="suggested-activity">
+            <h2 class="text-2xl text-cyan-300">Suggested Activity:</h2>
+            <p class="text-cyan-100 outline font-semibold">{{ activity }}!</p> <!-- Added exclamation mark and outline -->
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
