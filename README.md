@@ -16,6 +16,9 @@ Welcome to Explorium! This project utilizes Python-based Django for the backend 
 - **Beautiful Presentation**: Clean UI for ease of usage
 - **Customization**: Utilizes Tailwind CSS for easy customization and styling.
 
+![image](https://github.com/lsvishaal/Explorium/assets/62366204/177ffc64-f098-4368-8531-2b621e672a03)
+
+
 ## Installation
 
 To run Explorium locally, follow these steps:
